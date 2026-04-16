@@ -1,12 +1,19 @@
 /**
  * Simple file-based persistence for bot credentials and state.
- * Stores in ~/.weixin-claude-bot/
+ * Stores in ~/.weixin-claude-bot/ by default, or in the directory
+ * specified by the WEIXIN_BOT_PROFILE environment variable.
+ *
+ * To run multiple accounts simultaneously, set WEIXIN_BOT_PROFILE to
+ * a different directory for each process:
+ *   WEIXIN_BOT_PROFILE=/Users/you/.weixin-bot-account2 npm start
  */
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 
-const STATE_DIR = path.join(os.homedir(), ".weixin-claude-bot");
+const STATE_DIR = process.env.WEIXIN_BOT_PROFILE
+  ? path.resolve(process.env.WEIXIN_BOT_PROFILE)
+  : path.join(os.homedir(), ".weixin-claude-bot");
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
