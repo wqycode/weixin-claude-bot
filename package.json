@@ -7,7 +7,13 @@
     "build": "tsc",
     "start": "node --import tsx src/index.ts",
     "login": "node --import tsx src/login.ts",
-    "config": "node --import tsx src/config.ts"
+    "config": "node --import tsx src/config.ts",
+    "start:1": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-1 node --import tsx src/index.ts",
+    "login:1": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-1 node --import tsx src/login.ts",
+    "config:1": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-1 node --import tsx src/config.ts",
+    "start:2": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-2 node --import tsx src/index.ts",
+    "login:2": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-2 node --import tsx src/login.ts",
+    "config:2": "WEIXIN_BOT_PROFILE=$HOME/.weixin-bot-2 node --import tsx src/config.ts"
   },
   "dependencies": {
     "@anthropic-ai/claude-agent-sdk": "^0.2.0",
